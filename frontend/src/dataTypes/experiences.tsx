@@ -7,7 +7,8 @@ type Experience = {
     peopleReserved: number,
     description: string,
     owner: User,
-    schedule: Array<Date>
+    schedule: Array<Date>,
+    image?: HTMLImageElement 
 }
 
 //Filtering is not used or surfaced in frontend logic
