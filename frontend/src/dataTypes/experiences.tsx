@@ -8,7 +8,11 @@ type Experience = {
     description: string,
     owner: User,
     schedule: Array<Date>,
+<<<<<<< Updated upstream
     image?: HTMLImageElement 
+=======
+    image?: string
+>>>>>>> Stashed changes
 }
 
 //Filtering is not used or surfaced in frontend logic
