@@ -1,4 +1,4 @@
-import { User } from "./user";
+import { User } from "./user"
 
 type Experience = {
     activity: string,
@@ -8,7 +8,7 @@ type Experience = {
     description: string,
     owner: User,
     schedule: Array<Date>,
-    image?: HTMLImageElement 
+    image?: string 
 }
 
 //Filtering is not used or surfaced in frontend logic
