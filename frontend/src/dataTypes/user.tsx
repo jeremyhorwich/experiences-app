@@ -8,4 +8,4 @@ type User = {
 
 export type { User }
 
-//Rating history (granular by experience) be used or surfaced in frontend logic
+//Rating history (granular by experience) will not  be used or surfaced in frontend logic
