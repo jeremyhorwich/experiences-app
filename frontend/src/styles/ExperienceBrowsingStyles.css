@@ -3,3 +3,22 @@
     justify-content: space-around;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.centered {
+    display: flex;
+    justify-content: center;
+}
+
+.experienceDetails {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+
+.previewImage {
+    width: 150px;
+    height: auto;
+    align-self: stretch;
+    object-fit: cover;
+}

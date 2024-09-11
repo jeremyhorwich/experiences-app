@@ -19,7 +19,7 @@ const endDate: Date = new Date();
 endDate.setDate(1);
 
 const sampleExperience = {
-    activity: "Eating",
+    activity: "Come eat lunch with me!",
     location: "Delicious Restaurant",
     peopleNeeded: 1,
     peopleReserved: 0,
@@ -29,14 +29,18 @@ const sampleExperience = {
     image: img
 }
 
-const sampleExperienceArray = new Array(7).fill(sampleExperience)
+const sampleExperienceArray = new Array(8).fill(sampleExperience)
 
 function ExperienceBrowsing() {
     return (
         <div>
             <Toolbar />
-            <ExperiencePreview experiences={sampleExperienceArray} />
-            <PaginationControl currentPage={0} onChange={() => {}}/>
+            <div>
+                <ExperiencePreview experiences={sampleExperienceArray} />
+            </div>
+            <div className="centered">
+                <PaginationControl currentPage={0} onChange={() => {}}/>
+            </div>
         </div>
     )
 }
