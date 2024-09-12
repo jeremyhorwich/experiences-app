@@ -1,12 +1,12 @@
 type PaginationControlsProps = {
     currentPage: number,
-    onChange: (pageNumber: number) => void
+    onChange: (dir: -1 | 1) => void
 }
 
 function PaginationControl(props: PaginationControlsProps) {
     return (
         <div>
-            <button onClick={() => props.currentPage - 1}> {"<"} </button>
+            {props.currentPage > 0 && <button onClick={() => props.currentPage - 1}> {"<"} </button>}
             <span> Page {props.currentPage + 1}</span>
             <button onClick={() => props.currentPage + 1}> {">"} </button>
         </div>
