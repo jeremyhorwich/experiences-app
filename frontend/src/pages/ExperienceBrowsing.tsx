@@ -15,23 +15,26 @@ const sampleOwner = {
     rating: 100
 }
 
-const startDate: Date = new Date();
-startDate.setDate(0);
-const endDate: Date = new Date();
-endDate.setDate(1);
+const sampleExperienceArray = new Array(8).fill(undefined).map(() => {
+    const startDate = new Date();
+    const endDate = new Date(startDate);
 
-const sampleExperience = {
-    activity: "Come eat lunch with me!",
-    location: "Delicious Restaurant",
-    peopleNeeded: 1,
-    peopleReserved: 0,
-    description: "",
-    owner: sampleOwner,
-    schedule: [startDate,endDate],
-    image: img
-}
+    startDate.setDate(startDate.getDate() + Math.floor(Math.random() * 30));
+    endDate.setDate(startDate.getDate() + 1); // End date is one day after start date
 
-const sampleExperienceArray = new Array(8).fill(sampleExperience);
+    const sampleExperience = {
+        activity: "Come eat lunch with me!",
+        location: "Delicious Restaurant",
+        peopleNeeded: 1,
+        peopleReserved: 0,
+        description: "",
+        owner: sampleOwner,
+        schedule: [startDate, endDate],
+        image: img // Assuming img is defined elsewhere
+    };
+
+    return sampleExperience;
+});
 //End of sample data declation, beginning of working code
 
 function ExperienceBrowsing() {
@@ -43,6 +46,10 @@ function ExperienceBrowsing() {
     const NUMBER_PER_PAGE = 8;
 
     function handlePageChange(dir: -1 | 1) {
+        if (page.current + dir < 0) {
+            return
+        }
+
         page.current = page.current + dir;
         //Fetch from the API
         //Set experiences if fetch is successful - this will trigger rerender and display correct page #
