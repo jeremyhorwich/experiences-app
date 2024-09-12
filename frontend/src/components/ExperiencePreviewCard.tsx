@@ -2,8 +2,12 @@ import { Experience } from "../dataTypes/experiences";
 import "../styles/ExperienceBrowsingStyles.css"
 
 function ExperiencePreviewCard(props: Experience) {
+    function handleClick() {
+        //reroute to experience info page
+    }
+
     return (
-        <div className="experience-preview-card">
+        <div className="experience-preview-card" onClick={handleClick}>
             <div className="experience-details">
                 <div>{props.activity}</div>
                 <div>{formatDate(props.schedule[0])}</div>
