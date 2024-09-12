@@ -42,7 +42,7 @@ function ExperienceBrowsing() {
     //Initialize above to empty array when connecting to API
     const [loading, setLoading] = useState<boolean>(false);
     
-    const page = useRef<number>(1);
+    const page = useRef<number>(0);
     const NUMBER_PER_PAGE = 7;
 
     function handlePageChange(dir: -1 | 1) {
