@@ -1,22 +1,36 @@
-.experiencePreviewCard {
-    display: flex;
-    justify-content: space-around;
+body {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.experience-preview-card {
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+    margin: 2px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.experience-preview-card:hover {
+    background-color: rgba(205, 254, 254, 0.862);
+    cursor: pointer;
 }
 
 .centered {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.experienceDetails {
+.experience-details {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
 }
 
 
-.previewImage {
+.preview-image {
     width: 150px;
     height: auto;
     align-self: stretch;

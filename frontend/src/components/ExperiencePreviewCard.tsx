@@ -3,16 +3,16 @@ import "../styles/ExperienceBrowsingStyles.css"
 
 function ExperiencePreviewCard(props: Experience) {
     return (
-        <div className="experiencePreviewCard">
-            <div className="experienceDetails">
+        <div className="experience-preview-card">
+            <div className="experience-details">
                 <div>{props.activity}</div>
                 <div>{formatDate(props.schedule[0])}</div>
             </div>
-            <div className="experienceDetails">
-                <div>{props.location}</div>
+            <div className="experience-details">
+                <div>at {props.location}</div>
                 <div>{props.peopleReserved}/{props.peopleNeeded} people reserved</div>
             </div>
-            {props.image && <img src={props.image} alt={props.activity} className="previewImage"/>}
+            {props.image && <img src={props.image} alt={props.activity} className="preview-image"/>}
         </div>
     )
 }

@@ -15,7 +15,7 @@ const sampleOwner = {
     rating: 100
 }
 
-const sampleExperienceArray = new Array(8).fill(undefined).map(() => {
+const sampleExperienceArray = new Array(7).fill(undefined).map(() => {
     const startDate = new Date();
     const endDate = new Date(startDate);
 
@@ -42,8 +42,8 @@ function ExperienceBrowsing() {
     //Initialize above to empty array when connecting to API
     const [loading, setLoading] = useState<boolean>(false);
     
-    const page = useRef<number>(2);
-    const NUMBER_PER_PAGE = 8;
+    const page = useRef<number>(1);
+    const NUMBER_PER_PAGE = 7;
 
     function handlePageChange(dir: -1 | 1) {
         if (page.current + dir < 0) {
@@ -59,12 +59,16 @@ function ExperienceBrowsing() {
     return (
         <div>
             <Toolbar />
-            <div>
-                <ExperiencePreview experiences={experiences} />
-            </div>
-            <div className="centered">
-                <PaginationControl currentPage={page.current} onChange={(dir: -1 | 1) => {handlePageChange(dir)}}/>
-            </div>
+            {loading ? (<div className="centered">Loading...</div>) : (
+                <>
+                    <div className="centered">
+                        <ExperiencePreview experiences={experiences} />
+                    </div>
+                    <div className="centered">
+                        <PaginationControl currentPage={page.current} onChange={(dir: -1 | 1) => {handlePageChange(dir)}}/>
+                    </div>
+                </>
+            )}
         </div>
     )
 }

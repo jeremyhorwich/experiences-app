@@ -1,0 +1,11 @@
+.page-button {
+    border: 1px solid transparent;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 50%;
+}
+
+.page-button:hover {
+    cursor: pointer;
+    border: 1px solid black;
+}
