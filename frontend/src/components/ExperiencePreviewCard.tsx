@@ -1,13 +1,15 @@
 import { Experience } from "../dataTypes/experiences";
 import "../styles/ExperienceBrowsingStyles.css"
 
+const { DateTime } = require("luxon");
+
 function ExperiencePreviewCard(props: Experience) {
-    function handleClick() {
+    function onClick() {
         //reroute to experience info page
     }
 
     return (
-        <div className="experience-preview-card" onClick={handleClick}>
+        <div className="experience-preview-card" onClick={onClick}>
             <div className="experience-details">
                 <div>{props.activity}</div>
                 <div>{formatDate(props.schedule[0])}</div>

@@ -1,0 +1,292 @@
+{
+    "experiences": [
+        {
+            "id": 0,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-09-12T00:00:00.000Z", "2024-09-13T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 1,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-09-15T00:00:00.000Z", "2024-09-16T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 2,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-09-17T00:00:00.000Z", "2024-09-18T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 3,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-09-20T00:00:00.000Z", "2024-09-21T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 4,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-09-25T00:00:00.000Z", "2024-09-26T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 5,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-09-30T00:00:00.000Z", "2024-10-01T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 6,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-10-05T00:00:00.000Z", "2024-10-06T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 7,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-10-10T00:00:00.000Z", "2024-10-11T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 8,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-09-12T00:00:00.000Z", "2024-09-13T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 9,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-09-15T00:00:00.000Z", "2024-09-16T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 10,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-09-17T00:00:00.000Z", "2024-09-18T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 11,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-09-20T00:00:00.000Z", "2024-09-21T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 12,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-09-25T00:00:00.000Z", "2024-09-26T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 13,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-09-30T00:00:00.000Z", "2024-10-01T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 14,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-10-05T00:00:00.000Z", "2024-10-06T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        },
+        {
+            "id": 15,
+            "activity": "Come eat lunch with me!",
+            "location": "Delicious Restaurant",
+            "peopleNeeded": 1,
+            "peopleReserved": 0,
+            "description": "",
+            "owner": {
+                "name": "John Owner",
+                "age": 35,
+                "gender": "male",
+                "communicationPreference": "text",
+                "communicationAddress": 0,
+                "rating": 100
+            },
+            "schedule": ["2024-10-10T00:00:00.000Z", "2024-10-11T00:00:00.000Z"],
+            "image": "./perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg"
+        }
+    ]
+}

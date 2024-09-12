@@ -11,8 +11,7 @@ function ExperiencePreview(props: ExperiencePreviewProps){
             {props.experiences.length === 0 ? (
                 <span>Sorry, no experiences found. Check back later!</span>
             ) : (
-                props.experiences.map((experience: Experience) => 
-                <ExperiencePreviewCard key={experience.activity + experience.schedule[0].toString()}{...experience} />)
+                props.experiences.map((experience: Experience) => <ExperiencePreviewCard key={experience.id}{...experience} />)
             )}
         </div>
     )

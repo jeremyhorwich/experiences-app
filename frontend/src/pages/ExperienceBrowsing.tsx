@@ -15,7 +15,7 @@ const sampleOwner = {
     rating: 100
 }
 
-const sampleExperienceArray = new Array(7).fill(undefined).map(() => {
+const sampleExperienceArray = new Array(7).fill(undefined).map((_, index) => {
     const startDate = new Date();
     const endDate = new Date(startDate);
 
@@ -23,6 +23,7 @@ const sampleExperienceArray = new Array(7).fill(undefined).map(() => {
     endDate.setDate(startDate.getDate() + 1); // End date is one day after start date
 
     const sampleExperience = {
+        id: index,
         activity: "Come eat lunch with me!",
         location: "Delicious Restaurant",
         peopleNeeded: 1,
