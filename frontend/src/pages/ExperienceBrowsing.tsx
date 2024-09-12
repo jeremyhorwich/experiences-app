@@ -53,7 +53,6 @@ function ExperienceBrowsing() {
         page.current = page.current + dir;
         //Fetch from the API
         //Set experiences if fetch is successful - this will trigger rerender and display correct page #
-        console.log(page.current)
     }
     
     return (
