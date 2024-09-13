@@ -1,50 +1,31 @@
 import { Toolbar } from "../components/Toolbar";
 import { ExperiencePreview } from "../components/ExperiencePreview";
 import { PaginationControl } from "../components/PaginationControls";
-import img from "../assets/perry-merrity-ii-IEuHjlWmJo0-unsplash.jpg";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Experience } from "../dataTypes/experiences";
-
-//Beginning of sample data declaration
-const sampleOwner = {
-    name: "John Owner",
-    age: 35,
-    gender: "male" as const,
-    communicationPreference: "text" as const,
-    communicationAddress: 0,
-    rating: 100
-}
-
-const sampleExperienceArray = new Array(7).fill(undefined).map((_, index) => {
-    const startDate = new Date();
-    const endDate = new Date(startDate);
-
-    startDate.setDate(startDate.getDate() + Math.floor(Math.random() * 30));
-    endDate.setDate(startDate.getDate() + 1); // End date is one day after start date
-
-    const sampleExperience = {
-        id: index,
-        activity: "Come eat lunch with me!",
-        location: "Delicious Restaurant",
-        peopleNeeded: 1,
-        peopleReserved: 0,
-        description: "",
-        owner: sampleOwner,
-        schedule: [startDate, endDate],
-        image: img // Assuming img is defined elsewhere
-    };
-
-    return sampleExperience;
-});
-//End of sample data declation, beginning of working code
+import { DateTime } from "luxon";
+import samples from "../assets/sampleExperiences.json";
 
 function ExperienceBrowsing() {
-    const [experiences, setExperiences] = useState<Array<Experience>>(sampleExperienceArray);
+    const [experiences, setExperiences] = useState<Array<Experience>>([]);
     //Initialize above to empty array when connecting to API
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
     
     const page = useRef<number>(0);
     const NUMBER_PER_PAGE = 7;
+
+    useEffect(() => {
+        //Later this will be replaced with a call to the API
+        const sampleExperiences = samples["experiences"]
+            .slice(0,NUMBER_PER_PAGE)
+            .map(exp => ({
+                ...exp,
+                start: DateTime.fromISO(exp.start),
+                end: DateTime.fromISO(exp.end)
+            }));
+        setExperiences(sampleExperiences);
+        setLoading(false);
+    }, [])
 
     function handlePageChange(dir: -1 | 1) {
         if (page.current + dir < 0) {

@@ -1,13 +1,15 @@
-import { User } from "./user"
+import { DateTime } from "luxon"
 
 type Experience = {
+    id: number,
     activity: string,
     location: string,
     peopleNeeded: number,
     peopleReserved: number,
     description: string,
-    owner: User,
-    schedule: Array<Date>,
+    ownerId: number,
+    start: DateTime,
+    end: DateTime,
     image?: string 
 }
 
