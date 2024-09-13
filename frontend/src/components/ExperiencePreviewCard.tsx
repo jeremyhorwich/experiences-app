@@ -1,7 +1,7 @@
 import { Experience } from "../dataTypes/experiences";
 import "../styles/ExperienceBrowsingStyles.css"
+import { DateTime } from "luxon";
 
-const { DateTime } = require("luxon");
 
 function ExperiencePreviewCard(props: Experience) {
     function onClick() {
@@ -12,7 +12,7 @@ function ExperiencePreviewCard(props: Experience) {
         <div className="experience-preview-card" onClick={onClick}>
             <div className="experience-details">
                 <div>{props.activity}</div>
-                <div>{formatDate(props.schedule[0])}</div>
+                <div>{props.start.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}</div>
             </div>
             <div className="experience-details">
                 <div>at {props.location}</div>
@@ -21,24 +21,6 @@ function ExperiencePreviewCard(props: Experience) {
             {props.image && <img src={props.image} alt={props.activity} className="preview-image"/>}
         </div>
     )
-}
-
-function formatDate(date: Date): string {
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-    const day = days[date.getDay()];
-    const month = months[date.getMonth()];
-    const dayOfMonth = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-
-    const amPM = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
-
-    const formattedDate = `${day} ${month} ${dayOfMonth}, ${formattedHours}:${minutes.toString().padStart(2, '0')} ${amPM}`;
-
-    return formattedDate;
 }
 
 export { ExperiencePreviewCard };
