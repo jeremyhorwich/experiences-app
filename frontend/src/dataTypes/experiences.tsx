@@ -11,6 +11,7 @@ type Experience = {
     start: DateTime,
     end: DateTime,
     image?: string 
+
 }
 
 //Filtering is not used or surfaced in frontend logic
