@@ -1,0 +1,14 @@
+{
+    "Owners": 
+    [
+        {
+            "id": 0,
+            "name": "John Owner",
+            "age": 35,
+            "gender": "male",
+            "communicationPreference": "text",
+            "communicationAddress": 0,
+            "rating": 100
+        }
+    ]
+}

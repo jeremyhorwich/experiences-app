@@ -1,4 +1,5 @@
 type User = {
+    name: string,
     age: number,
     gender: "male" | "female" | "nonbinary",
     communicationPreference: "text" | "email",
