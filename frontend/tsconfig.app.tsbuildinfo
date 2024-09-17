@@ -1,0 +1,1 @@
+{"root":["./src/main.tsx","./src/vite-env.d.ts","./src/components/experiencepreview.tsx","./src/components/experiencepreviewcard.tsx","./src/components/paginationcontrols.tsx","./src/components/toolbar.tsx","./src/datatypes/experiences.tsx","./src/datatypes/user.tsx","./src/pages/experiencebrowsing.tsx"],"version":"5.6.2"}
