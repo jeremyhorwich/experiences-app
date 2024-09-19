@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.rating-area {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment {
+  min-width: 500px;
+  margin: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.submission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment-prompt {
+  color: red;
+}
+
+.submit-button {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

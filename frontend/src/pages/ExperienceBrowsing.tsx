@@ -6,7 +6,7 @@ import { Experience } from "../dataTypes/experiences";
 import { DateTime } from "luxon";
 import samples from "../assets/sampleExperiences.json";
 
-function ExperienceBrowsing() {
+function ExperienceBrowsingPage() {
     const [experiences, setExperiences] = useState<Array<Experience>>([]);
     //Initialize above to empty array when connecting to API
     const [loading, setLoading] = useState<boolean>(true);
@@ -54,4 +54,4 @@ function ExperienceBrowsing() {
     )
 }
 
-export { ExperienceBrowsing };
+export { ExperienceBrowsingPage };

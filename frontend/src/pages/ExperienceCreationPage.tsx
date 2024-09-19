@@ -3,17 +3,17 @@ import { Toolbar } from "../components/Toolbar";
 import "../styles/ExperienceCreationFormPageStyles.css"
 
 
-function CreateExperience() {
+function ExperienceCreationPage() {
     //I will handle user context when I create the user login/signup page
 
     return (
         <div>
             <Toolbar/>
             <div className="form">
-                <ExperienceCreationForm id={1}/>
+                <ExperienceCreationForm />
             </div>
         </div>
     )
 }
 
-export { CreateExperience };
+export { ExperienceCreationPage };
