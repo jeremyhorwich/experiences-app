@@ -1,4 +1,4 @@
-import "../styles/paginationControlStyles.css"
+import "./paginationControl.css"
 
 type PaginationControlsProps = {
     currentPage: number,

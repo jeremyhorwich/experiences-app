@@ -1,6 +1,6 @@
 import { Experience } from "../dataTypes/experiences";
-import "../styles/ExperienceBrowsingStyles.css"
 import { DateTime } from "luxon";
+import "./ExperiencePreviewCard.css"
 
 
 function ExperiencePreviewCard(props: Experience) {

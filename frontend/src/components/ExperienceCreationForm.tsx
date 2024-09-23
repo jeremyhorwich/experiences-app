@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { DateTime } from "luxon";
 import { ExperienceDateSelection } from "./ExperienceDateSelection";
 import { CheckboxState, ExperienceFilteringSelection } from "./ExperienceFilteringSelection";
-import "../styles/ExperienceCreationFormStyles.css"
+import "./ExperienceCreationForm.css"
 
 function ExperienceCreationForm() {
     const [peopleNeeded, setPeopleNeeded] = useState<number>(1);

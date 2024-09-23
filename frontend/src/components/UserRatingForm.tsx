@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { RatingButtons, RatingOptions } from "./RatingButtons";
-import "../styles/UserRatingFormStyles.css"
+import "./UserRatingForm.css"
 
 type UserRatingFormProps = {
     userIds: Array<number>,

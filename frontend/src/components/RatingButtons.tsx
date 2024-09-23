@@ -1,7 +1,7 @@
 import { useState } from "react";
 import thumbsDown from "../assets/thumbs-down-svgrepo-com.svg";
 import thumbsUp from "../assets/thumbs-up-svgrepo-com.svg";
-import "../styles/RatingButtonsStyles.css"
+import "./RatingButtons.css"
 
 type RatingButtonsProps = {
     onChange: Function
