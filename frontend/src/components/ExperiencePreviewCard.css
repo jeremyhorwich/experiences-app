@@ -1,0 +1,31 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.experience-preview-card {
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+  margin: 2px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.experience-preview-card:hover {
+  background-color: #cdfefedb;
+  cursor: pointer;
+}
+
+.experience-details {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.preview-image {
+  width: 150px;
+  height: auto;
+  align-self: stretch;
+  object-fit: cover;
+}

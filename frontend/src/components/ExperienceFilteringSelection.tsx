@@ -1,5 +1,5 @@
 import { useState } from "react"
-import "../styles/ExperienceFilteringSelectionStyles.css"
+import "./ExperienceFilteringSelection.css"
 
 type ExperienceFilteringSelectionProps = {
     onChange: Function

@@ -1,6 +1,6 @@
 import { Toolbar } from "../components/Toolbar";
 import { UserRatingForm } from "../components/UserRatingForm";
-import "../styles/ExperienceCreationFormPageStyles.css"
+import "./UsersRatingPage.css"
 
 
 function UsersRatingPage() {

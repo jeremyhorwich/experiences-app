@@ -1,4 +1,4 @@
-import "../styles/ToolbarStyles.css";
+import "./Toolbar.css";
 
 function Toolbar() {
   return (

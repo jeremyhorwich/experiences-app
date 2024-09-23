@@ -1,6 +1,6 @@
 import { ExperienceCreationForm } from "../components/ExperienceCreationForm";
 import { Toolbar } from "../components/Toolbar";
-import "../styles/ExperienceCreationFormPageStyles.css"
+import "./ExperienceCreationPage.css"
 
 
 function ExperienceCreationPage() {

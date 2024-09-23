@@ -1,6 +1,6 @@
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"
 import { useState, useRef, ChangeEvent } from "react";
+import "react-datepicker/dist/react-datepicker.css"
 
 type ExperienceDateSelectionProps = {
     onChange: Function
