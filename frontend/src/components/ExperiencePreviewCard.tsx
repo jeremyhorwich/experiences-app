@@ -16,7 +16,7 @@ function ExperiencePreviewCard(props: Experience) {
             </div>
             <div className="experience-details">
                 <div>at {props.location}</div>
-                <div>{props.peopleReserved}/{props.peopleNeeded} people reserved</div>
+                <div>{props.peopleReserved.length}/{props.peopleNeeded} people reserved</div>
             </div>
             {props.image && <img src={props.image} alt={props.activity} className="preview-image"/>}
         </div>

@@ -1,15 +1,10 @@
 import { useRef, useState } from "react";
 import { DateTime } from "luxon";
-import { Experience } from "../dataTypes/experiences";
 import { ExperienceDateSelection } from "./ExperienceDateSelection";
 import { CheckboxState, ExperienceFilteringSelection } from "./ExperienceFilteringSelection";
 import "../styles/ExperienceCreationFormStyles.css"
 
-type userId = {
-    id: number
-}
-
-function ExperienceCreationForm(props: userId) {
+function ExperienceCreationForm() {
     const [peopleNeeded, setPeopleNeeded] = useState<number>(1);
 
     const activity = useRef<string>("");
@@ -31,21 +26,8 @@ function ExperienceCreationForm(props: userId) {
         if (activity.current === "" || description.current === "" || location.current === "") {
             return;
         }
-        
-        let newExperience: Experience;
-        newExperience = {
-            id: 0,   //Placeholder: backend will generate ID
-            activity: activity.current,
-            location: location.current,
-            peopleNeeded: peopleNeeded,
-            peopleReserved: 0,
-            description: description.current,
-            ownerId: props.id,
-            start: startTime.current,
-            end: endTime.current,
-            image: file.current
-        }
-        //Post the experience into the database via API, and attach filtering criteria
+
+        //Placeholder to post the experience into the database via API, and attach filtering criteria
     }
 
     function onDateChange(startDate: Date, duration: number) {

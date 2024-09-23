@@ -5,7 +5,7 @@ type Experience = {
     activity: string,
     location: string,
     peopleNeeded: number,
-    peopleReserved: number,
+    peopleReserved: Array<number>,
     description: string,
     ownerId: number,
     start: DateTime,
