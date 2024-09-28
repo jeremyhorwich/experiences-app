@@ -1,7 +1,7 @@
 import { DateTime } from "luxon"
 
 type Experience = {
-    id: number,
+    id: string,
     activity: string,
     location: string,
     peopleNeeded: number,
@@ -10,6 +10,7 @@ type Experience = {
     ownerId: number,
     start: DateTime,
     end: DateTime,
+    messages: Array<string>,
     image?: string 
 }
 

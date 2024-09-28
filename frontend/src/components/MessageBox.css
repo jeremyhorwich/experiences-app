@@ -1,0 +1,50 @@
+.message-box {
+  border: 1px solid #000;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-box div {
+  margin: 10px;
+}
+
+.sent-by-other {
+  background-color: #d4edda;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+  align-self: flex-start;
+  max-width: 70%;
+}
+
+.sent-by-self {
+  background-color: #bdddff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+  align-self: flex-end;
+  max-width: 70%;
+}
+
+.sent-by-other span,
+.sent-by-self span {
+  display: block;
+}
+
+.info {
+  font-size: 0.8em;
+  color: #6c757d;
+  margin-top: 5px;
+}
+
+.input-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.message-input {
+  align-items: center;
+  min-width: 500px;
+}

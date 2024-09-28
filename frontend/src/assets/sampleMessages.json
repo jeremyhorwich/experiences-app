@@ -1,0 +1,39 @@
+{
+    "messages": [
+        {
+            "id": "1",
+            "text": "Hey! Where do you want to meet?",
+            "sender": "0",
+            "senderName": "John User",
+            "timeSent": "2024-09-26T10:15:00.000Z"
+        },
+        {
+            "id": "2",
+            "text": "By the Ferris Wheel. Sound good?",
+            "sender": "1",
+            "senderName": "Bill User",
+            "timeSent": "2024-09-26T10:16:00.000Z"
+        },
+        {
+            "id": "3",
+            "text": "Yes! looking forward to it.",
+            "sender": "0",
+            "senderName": "John User",
+            "timeSent": "2024-09-26T10:17:30.000Z"
+        },
+        {
+            "id": "4",
+            "text": "It'll be cold. Dress warm!",
+            "sender": "1",
+            "senderName": "Bill User",
+            "timeSent": "2024-09-26T10:18:00.000Z"
+        },
+        {
+            "id": "5",
+            "text": "Sure will.",
+            "sender": "0",
+            "senderName": "John User",
+            "timeSent": "2024-09-26T10:19:15.000Z"
+        }
+    ]
+}
