@@ -1,11 +1,38 @@
 {
-    "Owners": 
+    "Users": 
     [
         {
-            "id": 0,
-            "name": "John Owner",
+            "id": "0",
+            "name": "John User",
             "age": 35,
             "gender": "male",
+            "communicationPreference": "text",
+            "communicationAddress": 0,
+            "rating": 100
+        },
+        {
+            "id": "1",
+            "name": "Bill User",
+            "age": 35,
+            "gender": "male",
+            "communicationPreference": "text",
+            "communicationAddress": 0,
+            "rating": 100
+        },
+        {
+            "id": "2",
+            "name": "Cathy User",
+            "age": 35,
+            "gender": "female",
+            "communicationPreference": "text",
+            "communicationAddress": 0,
+            "rating": 100
+        },
+        {
+            "id": "3",
+            "name": "James User",
+            "age": 35,
+            "gender": "nonbinary",
             "communicationPreference": "text",
             "communicationAddress": 0,
             "rating": 100
