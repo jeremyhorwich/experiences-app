@@ -1,10 +1,10 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ExperienceInfo } from './pages/ExperienceInfo';
+import { LoginPage } from './pages/LoginPage';
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ExperienceInfo />
+    <LoginPage />
   </StrictMode>,
 )
