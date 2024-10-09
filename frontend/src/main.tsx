@@ -1,10 +1,9 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { LoginPage } from './pages/LoginPage';
-
+import { UserSignUpForm } from './components/UserSignUpForm';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <LoginPage />
+    <UserSignUpForm />
   </StrictMode>,
 )

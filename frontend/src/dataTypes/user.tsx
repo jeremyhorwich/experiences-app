@@ -1,4 +1,5 @@
 type User = {
+    id: string,
     name: string,
     age: number,
     gender: "male" | "female" | "nonbinary",
@@ -7,6 +8,11 @@ type User = {
     rating: number
 }
 
-export type { User }
+type Credential = {
+    username: string,
+    password: string
+}
+
+export type { User, Credential }
 
 //Rating history (granular by experience) will not  be used or surfaced in frontend logic
