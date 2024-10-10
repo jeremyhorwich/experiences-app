@@ -5,3 +5,8 @@ export const USERNAME = "Username";
 export const PASSWORD = "Password";
 
 export const SUBMIT = "Submit";
+
+export const NAME = "Name";
+export const AGE = "Age";
+export const COMMUNICATION = "Communication preference?";
+export const GENDER = "Gender";

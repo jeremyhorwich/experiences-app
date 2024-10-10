@@ -1,0 +1,21 @@
+.signup-form {
+  background-color: #c0c0c0;
+  padding: 5px;
+  border-radius: 8px;
+  max-width: 500px;
+}
+
+.signup-fields {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.give-padding {
+  padding: 5px;
+}
+
+.error-text {
+  color: #f00;
+  font-size: 13px;
+}
