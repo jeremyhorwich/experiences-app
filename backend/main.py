@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from presentation import user_routes
+from presentation import experience_routes, user_routes
 
 app = FastAPI()
 
@@ -18,6 +18,7 @@ app.add_middleware(
 )
 
 app.include_router(user_routes.router)
+app.include_router(experience_routes.router)
 
 
 @app.get("/")
