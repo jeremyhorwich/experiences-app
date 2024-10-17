@@ -37,7 +37,7 @@ class ExperienceRepository:
 
         except Exception as e:
             logging.error(f"ExperienceRepository.get failed: {e}")
-            return None
+            raise HTTPException(status_code=400, detail="Bad request: " + str(e))
 
     async def post(self, experience: Experience):
         try:
@@ -49,4 +49,19 @@ class ExperienceRepository:
 
         except Exception as e:
             logging.error(f"ExperienceRepository.post failed: {e}")
+            raise HTTPException(status_code=400, detail="Bad request: " + str(e))
+
+    async def get_message_ids(
+        self,
+        experience_id: str,
+    ) -> list[str]:
+        try:
+            experience = await self.get(id=experience_id)
+            if experience is not None:
+                message_ids = experience["messages"]
+                return message_ids
+            return []
+
+        except Exception as e:
+            logging.error(f"ExperienceRepository.get_message_ids failed: {e}")
             raise HTTPException(status_code=400, detail="Bad request: " + str(e))
