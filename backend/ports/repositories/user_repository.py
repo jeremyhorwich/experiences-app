@@ -5,6 +5,7 @@ import pymongo.errors
 from bson import ObjectId
 from domain.entities.user import User
 from dotenv import load_dotenv
+from fastapi import HTTPException
 from motor.motor_asyncio import AsyncIOMotorClient
 
 load_dotenv()
@@ -21,7 +22,7 @@ class UserRepository:
     def __init__(self) -> None:
         try:
             client = AsyncIOMotorClient(mongo_uri)
-            self.db = client.ExperienceApp
+            self.users_collection = client.ExperienceApp.Users
 
         except pymongo.errors.ConnectionFailure as error:
             logging.error(f"Could not connect to database: {error}")
@@ -30,10 +31,30 @@ class UserRepository:
         try:
             id = filters.get("id")
             o_id = ObjectId(id)
-            user = await self.db.Users.find_one({"_id": o_id})
+            user = await self.users_collection.find_one({"_id": o_id})
             user["_id"] = str(user["_id"])
             return user
 
         except Exception as e:
-            logging.error(f"UserRepository.get failed with exception: {e}")
-            return None
+            logging.error(f"UserRepository.get failed: {e}")
+            raise HTTPException(status_code=400, detail="Bad request: " + str(e))
+
+    async def get_multiple(self, **filters) -> list[User] | None:
+        try:
+            ids = filters.get("ids")
+
+            if not ids:
+                return []
+
+            cursor = self.users_collection.find(
+                {"_id": {"$in": [ObjectId(m_id) for m_id in ids]}}
+            )
+            fetched = await cursor.to_list(length=None)
+
+            for user in fetched:
+                user["_id"] = str(user["_id"])
+            return fetched
+
+        except Exception as e:
+            logging.error(f"UserRepository.get_multiple failed: {e}")
+            raise HTTPException(status_code=400, detail="Bad request: " + str(e))
