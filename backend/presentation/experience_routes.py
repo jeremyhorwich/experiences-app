@@ -2,6 +2,7 @@ from typing import Annotated
 
 from domain.entities.experience import Experience
 from fastapi import APIRouter, Depends
+from presentation.models.PostMessageRequest import PostMessageRequest
 from services.experience_service import ExperienceService
 
 router = APIRouter(prefix="/experiences")
@@ -47,3 +48,16 @@ async def get_messages_by_experience(
     )
     if result:
         return result
+
+
+@router.post("/{experience_id}/messages/")
+async def post_new_message_to_experience(
+    experience_id: str,
+    request: PostMessageRequest,
+    experience_service: experience_service_dependency,
+):
+    result = await experience_service.add_new_message(
+        experience_id, request.new_message
+    )
+
+    return result
