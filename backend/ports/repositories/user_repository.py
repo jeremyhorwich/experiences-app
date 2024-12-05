@@ -58,3 +58,36 @@ class UserRepository:
         except Exception as e:
             logging.error(f"UserRepository.get_multiple failed: {e}")
             raise HTTPException(status_code=400, detail="Bad request: " + str(e))
+
+    async def update_rating(self, id, increment_value) -> str | None:
+        MIN_BOUND = 0
+        MAX_BOUND = 200
+        o_id = ObjectId(id)
+
+        try:
+            user = await self.users_collection.find_one({"_id": o_id})
+
+            if not user:
+                raise HTTPException(status_code=404, detail="User not found")
+
+            current_rating = user.get("rating", 0)
+            new_rating = min(
+                max(current_rating + increment_value, MIN_BOUND), MAX_BOUND
+            )
+
+            result = await self.users_collection.update_one(
+                {"_id": o_id}, {"$set": {"rating": new_rating}}
+            )
+
+            if result.modified_count == 0:
+                logging.warning(f"Rating update not applied for user: {id}")
+                return "No changes applied"
+
+            return f"Rating updated succesfully for {id}"
+
+        except HTTPException:
+            raise
+
+        except Exception as e:
+            logging.error(f"UserRepository.get_multiple failed: {e}")
+            raise HTTPException(status_code=400, detail="Bad request: " + str(e))
