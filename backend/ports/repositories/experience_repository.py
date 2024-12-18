@@ -40,6 +40,39 @@ class ExperienceRepository:
             logging.error(f"ExperienceRepository.get failed: {e}")
             raise HTTPException(status_code=400, detail="Bad request: " + str(e))
 
+    async def find_matching(
+        self, age: int, rating: int, gender: str, page: int, page_size: int
+    ):
+        gender_field = f"{gender}_included"
+        query = {
+            "min_age": {"$lte": age},
+            "max_age": {"$gte": age},
+            "min_rating": {"$lte": rating},
+            gender_field: True,
+        }
+
+        skip = (page - 1) * (page_size)
+
+        try:
+            cursor = self.experiences_collection.find(query).skip(skip).limit(page_size)
+            found = await cursor.to_list(length=page_size)
+            for experience in found:
+                experience["_id"] = str(experience["_id"])
+
+            total_count = await self.experiences_collection.count_documents(query)
+
+            return {
+                "results": found,
+                "page": page,
+                "page_size": page_size,
+                "total_count": total_count,
+                "total_pages": (total_count + page_size - 1) // page_size,
+            }
+
+        except Exception as e:
+            logging.error(f"ExperienceRepository.find_matching failed: {e}")
+            raise HTTPException(status_code=400, detail="Bad request: " + str(e))
+
     async def post(self, experience: Experience):
         try:
             data = experience.model_dump()
