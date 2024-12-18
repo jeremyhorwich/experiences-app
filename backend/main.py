@@ -1,6 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from presentation import experience_routes, message_routes, user_routes
+from presentation import (
+    authentication_routes,
+    experience_routes,
+    message_routes,
+    user_routes,
+)
 
 app = FastAPI()
 
@@ -17,9 +22,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(user_routes.router)
+app.include_router(authentication_routes.router)
 app.include_router(experience_routes.router)
 app.include_router(message_routes.router)
+app.include_router(user_routes.router)
 
 
 @app.get("/")
