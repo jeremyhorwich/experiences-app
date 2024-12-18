@@ -41,3 +41,14 @@ async def update_rating(
 ):
     result = await user_service.update_rating(user_id, request.increment_value)
     return result
+
+
+@router.get("/{user_id}/experiences/")
+async def get_applicable_experiences(
+    user_service: user_service_dependency,
+    user_id: str,
+    page: int = 1,
+    pageSize: int = 10,
+):
+    result = await user_service.get_applicable_experiences(user_id, page, pageSize)
+    return result
