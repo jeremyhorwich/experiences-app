@@ -1,3 +1,4 @@
+from dependencies import limiter
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from presentation import (
@@ -6,8 +7,12 @@ from presentation import (
     message_routes,
     user_routes,
 )
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
 
 app = FastAPI()
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 origins = [
     "http://127.0.0.1:8000",

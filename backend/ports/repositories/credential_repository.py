@@ -38,3 +38,17 @@ class CredentialRepository:
         except Exception as e:
             logging.error(f"CredentialRepository.post failed: {e}")
             raise HTTPException(status_code=400, detail="Bad request: " + str(e))
+
+    async def get(self, username: str):
+        try:
+            document = await self.credentials_collection.find_one(
+                {"username": username}
+            )
+            if document:
+                document["id"] = str(document.pop("_id"))
+                return Credential(**document)
+            return None
+
+        except Exception as e:
+            logging.error(f"CredentialRepository.get failed: {e}")
+            raise HTTPException(status_code=400, detail="Bad request: " + str(e))
