@@ -2,6 +2,7 @@ from typing import Annotated
 
 from dependencies import limiter
 from fastapi import APIRouter, Depends
+from presentation.models.PostCreateUserRequest import PostCreateUserRequest
 from presentation.models.PostCredentialRequest import PostCredentialRequest
 from services.authentication_service import AuthenticationService
 from starlette.requests import Request
@@ -23,10 +24,10 @@ authentication_service_dependency = Annotated[
 
 @router.post("/signup")
 async def create_user(
-    request: PostCredentialRequest,
+    request: PostCreateUserRequest,
     authentication_service: authentication_service_dependency,
 ):
-    result = await authentication_service.create_new(request.credential)
+    result = await authentication_service.create_new(request.credential, request.user)
     return result
 
 

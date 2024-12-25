@@ -9,10 +9,10 @@ type User = {
 }
 
 type Credential = {
+    id: string,
+    user: string,
     username: string,
     password: string
 }
 
 export type { User, Credential }
-
-//Rating history (granular by experience) will not  be used or surfaced in frontend logic

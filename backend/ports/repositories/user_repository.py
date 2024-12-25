@@ -59,6 +59,18 @@ class UserRepository:
             logging.error(f"UserRepository.get_multiple failed: {e}")
             raise HTTPException(status_code=400, detail="Bad request: " + str(e))
 
+    async def post(self, user: User):
+        try:
+            data = user.model_dump()
+            data["_id"] = user.id
+            data.pop("id", None)
+            result = await self.users_collection.insert_one(data)
+            return {"id": str(result.inserted_id)}
+
+        except Exception as e:
+            logging.error(f"UserRepository.post failed: {e}")
+            raise HTTPException(status_code=400, detail="Bad request: " + str(e))
+
     async def update_rating(self, id, increment_value) -> str | None:
         MIN_BOUND = 0
         MAX_BOUND = 200
