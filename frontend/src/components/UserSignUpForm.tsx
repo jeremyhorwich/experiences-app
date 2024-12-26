@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { User, Credential } from "../dataTypes/user";
-import { v4 as uuidv4 } from "uuid";
+import { postCreateUser } from "../api/postCreateUser";
+import { User, Credential } from "../dataTypes/users";
+import { v4 as uuidv4 } from 'uuid';
 import { NAME, AGE, GENDER, COMMUNICATION, SUBMIT } from "../constants/constants-en_us";
 import { USERNAME, PASSWORD } from "../constants/constants-en_us";
 import "./UserSignUpForm.css";
@@ -59,12 +60,16 @@ function UserSignUpForm() {
         }
 
         const newCredential: Credential = {
+            id: uuidv4(),
+            user: newUser.id,
             username: username,
             password: password
         }
 
-        console.log(newUser, newCredential) 
-        //Placeholder: replace with creation call to API
+        postCreateUser(newCredential, newUser)
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     return (

@@ -2,7 +2,6 @@ import logging
 from os import getenv
 
 import pymongo.errors
-from bson import ObjectId
 from domain.entities.credential import Credential
 from dotenv import load_dotenv
 from fastapi import HTTPException
@@ -30,7 +29,7 @@ class CredentialRepository:
     async def post(self, credential: Credential):
         try:
             data = credential.model_dump()
-            data["_id"] = ObjectId(credential.id)
+            data["_id"] = credential.id
             data.pop("id", None)
             result = await self.credentials_collection.insert_one(data)
             return {"id": str(result.inserted_id)}

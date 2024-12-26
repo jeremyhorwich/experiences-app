@@ -2,13 +2,16 @@ from datetime import datetime, timedelta
 
 import jwt
 from domain.entities.credential import Credential
+from domain.entities.user import User
 from passlib.context import CryptContext
 from ports.repositories.credential_repository import CredentialRepository
+from ports.repositories.user_repository import UserRepository
 
 
 class AuthenticationService:
     def __init__(self) -> None:
         self.credential_repository = CredentialRepository()
+        self.user_repository = UserRepository()
         self.pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
     def validate_password_strength(self, password: str) -> bool:
@@ -29,13 +32,15 @@ class AuthenticationService:
         token = jwt.encode(payload, KEY, algorithm="HS256")
         return token
 
-    async def create_new(self, credential: Credential):
+    async def create_new(self, credential: Credential, user: User):
         try:
             self.validate_password_strength(credential.password)
             hashed = self.pwd_context.hash(credential.password)
             credential.password = hashed
-            result = await self.credential_repository.post(credential)
-            return result
+            print("ASdfasdfasdf")
+            await self.credential_repository.post(credential)
+            await self.user_repository.post(user)  # TODO: make these two posts atomic
+            return {"result": "created user successfully"}
 
         except ValueError as e:
             return {"failure": str(e)}
