@@ -1,15 +1,33 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { USERNAME, PASSWORD, SUBMIT } from "../constants/constants-en_us";
 import "./LoginForm.css";
+import { loginUser } from "../api/loginUser";
+import { UserContext } from "../context/userContext";
 
 function LoginForm() {
     const [usernameField, setUsernameField] = useState<string>("");
     const [passwordField, setPasswordField] = useState<string>("");
 
+    const userContext = useContext(UserContext)
+
+    if (!userContext) {
+        throw new Error("LoginForm must be used within a UserContextProvider");
+    }
+
+    const { setUserId: setUser, setToken } = userContext;
+
 
     function onLoginSubmit() {
-        //Placeholder - in the future we will verify using API
-        console.log(usernameField, passwordField)
+        loginUser(usernameField, passwordField)
+            .then((response) => {
+                if (response.success) {
+                    setUser(response.userId);
+                    setToken(response.token);
+                }
+            })
+            .catch((error) => {
+                console.log("Login failed: ", error)
+            });
     }
 
     return (
