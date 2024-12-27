@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import samples from "../assets/sampleUsers.json";
 import { LOADING, MORE } from "../constants/constants-en_us";
 import "./ReservedInExperienceDisplay.css"
+import { findMultipleUsers, findUser } from "../api/findUser";
 
 type ReservedInExperienceDisplayProps = {
-    owner: number
-    reserved: Array<number>
+    owner: string
+    reserved: Array<string>
 }
 
 function ReservedInExperienceDisplay(props: ReservedInExperienceDisplayProps) {
@@ -16,23 +16,29 @@ function ReservedInExperienceDisplay(props: ReservedInExperienceDisplayProps) {
     
     const DEFAULT_DISPLAY = 2;
 
-    //Begin placeholder. Later will replace with fetching owners by ownerID from API
     useEffect(() => {
-        const sampleUsers = samples["Users"]
-            .slice(0,props.reserved.length + 1)
-            .map(user => user.name);
-        setOwner(sampleUsers[props.owner])
-    
-        if (props.reserved.length > 0) {
-            const reservedNames = props.reserved
-                .map(i => sampleUsers[i])
-            setReserved(reservedNames);
-        }
-    
-        setLoading(false);
-    }, [])
+        async function fetchData() {
+            try {
+                const [ownerResponse, reservedResponse] = await Promise.all([
+                    findUser(props.owner),
+                    findMultipleUsers(props.reserved),
+                ]);
 
-    //End placeholder
+                setOwner(ownerResponse?.name)
+
+                const reservedNames = reservedResponse?.map((user) => user.name);
+                if (reservedNames) {
+                    setReserved(reservedNames);
+                }
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        fetchData();
+    }, [])
     
     return (
         <div>

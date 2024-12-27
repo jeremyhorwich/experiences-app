@@ -5,15 +5,13 @@ type Experience = {
     activity: string,
     location: string,
     peopleNeeded: number,
-    peopleReserved: Array<number>,
+    peopleReserved: Array<string>,
     description: string,
-    ownerId: number,
+    ownerId: string,
     start: DateTime,
     end: DateTime,
     messages: Array<string>,
     image?: string 
 }
-
-//Filtering is not used or surfaced in frontend logic
 
 export type { Experience }
