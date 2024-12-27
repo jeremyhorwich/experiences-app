@@ -74,10 +74,9 @@ class UserRepository:
     async def update_rating(self, id, increment_value) -> str | None:
         MIN_BOUND = 0
         MAX_BOUND = 200
-        o_id = ObjectId(id)
 
         try:
-            user = await self.users_collection.find_one({"_id": o_id})
+            user = await self.users_collection.find_one({"_id": id})
 
             if not user:
                 raise HTTPException(status_code=404, detail="User not found")
@@ -88,7 +87,7 @@ class UserRepository:
             )
 
             result = await self.users_collection.update_one(
-                {"_id": o_id}, {"$set": {"rating": new_rating}}
+                {"_id": id}, {"$set": {"rating": new_rating}}
             )
 
             if result.modified_count == 0:

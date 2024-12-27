@@ -4,13 +4,12 @@ import "./UsersRatingPage.css"
 
 
 function UsersRatingPage() {
-    //I will handle activity/user context and fetching when I create the user login/signup page
-
     return (
         <div>
             <Toolbar/>
             <div className="form">
-                <UserRatingForm userIds={[0,1]} userFirstNames={["Bob", "Tom"]} activity="Going to the beach"/>
+                {/* Sample test data */}
+                <UserRatingForm userIds={["ae8d2e05-45c9-4220-94b1-594eb36c937c"]} userFirstNames={["Bob", "Tom"]} activity="Going to the beach"/>
             </div>
         </div>
     )
