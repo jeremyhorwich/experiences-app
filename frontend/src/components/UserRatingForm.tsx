@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
 import { RatingButtons, RatingOptions } from "./RatingButtons";
 import "./UserRatingForm.css"
+import { updateUserRating } from "../api/updateUserRating";
 
 type UserRatingFormProps = {
-    userIds: Array<number>,
+    userIds: Array<string>,
     userFirstNames: Array<string>,
     activity: string
 }
@@ -28,7 +29,14 @@ function UserRatingForm(props: UserRatingFormProps) {
             return;
         }
 
-        //Placeholder for sending the rating selection and userId to db via API
+        const incrementValue = ratingIsNegativeOrReport ? -1 : 1
+
+        //TODO: Validate user token on backend for this action
+        updateUserRating(props.userIds[currentRatee], incrementValue)
+            .catch((error) => {
+                console.log("Login failed: ", error)
+            });
+
 
         if (currentRatee < props.userIds.length - 1) {
             ratingSelection.current = null;
@@ -36,7 +44,7 @@ function UserRatingForm(props: UserRatingFormProps) {
             setShowCommentPrompt(false);
             setCurrentRatee(currentRatee + 1);
         } else {
-            //Redirect to experience browsing page
+            //TODO: redirect to experience browsing page
         }
     }
 
