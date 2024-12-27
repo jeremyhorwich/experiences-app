@@ -3,7 +3,7 @@ from typing import Annotated
 from dependencies import limiter
 from fastapi import APIRouter, Depends
 from presentation.models.PostCreateUserRequest import PostCreateUserRequest
-from presentation.models.PostCredentialRequest import PostCredentialRequest
+from presentation.models.PostLoginRequest import PostLoginRequest
 from services.authentication_service import AuthenticationService
 from starlette.requests import Request
 
@@ -35,8 +35,10 @@ async def create_user(
 @limiter.limit("10/minute")
 async def login(
     request: Request,  # pylint: disable=unused-argument
-    credential_request: PostCredentialRequest,
+    login_request: PostLoginRequest,
     authentication_service: authentication_service_dependency,
 ):
-    result = await authentication_service.verify_login(credential_request.credential)
+    result = await authentication_service.verify_login(
+        login_request.username, login_request.password
+    )
     return result

@@ -45,16 +45,18 @@ class AuthenticationService:
         except ValueError as e:
             return {"failure": str(e)}
 
-    async def verify_login(self, credential: Credential):
-        stored_credential = await self.credential_repository.get(credential.username)
+    async def verify_login(self, username: str, password: str):
+        stored_credential = await self.credential_repository.get(username)
         if not stored_credential:
             return {"failure": "Username or password invalid"}
 
-        password_valid = self.pwd_context.verify(
-            credential.password, stored_credential.password
-        )
+        password_valid = self.pwd_context.verify(password, stored_credential.password)
         if not password_valid:
             return {"failure": "Username or password invalid"}
 
         token = self.generate_jwt({"username": stored_credential.username})
-        return {"success": "Login successful", "token": token}
+        return {
+            "success": "Login successful",
+            "userId": stored_credential.user,
+            "token": token,
+        }
