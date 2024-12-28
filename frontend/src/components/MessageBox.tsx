@@ -3,8 +3,10 @@ import { DateTime } from "luxon";
 import { Message } from "../dataTypes/messages";
 import "./MessageBox.css"
 import { v4 as uuidv4 } from "uuid";
+import { sendNewMessage } from "../api/sendNewMessage";
 
 type MessagesDisplayProps = {
+    experienceId: string,
     messages: Array<Message>,
     currentUser: string,
     currentUserName: string
@@ -36,7 +38,8 @@ function MessageBox(props: MessagesDisplayProps) {
             timeSent: DateTime.now()
         }
 
-        //Placeholder for sending the new message to the backend via API call
+        sendNewMessage(props.experienceId, newMessage)
+            .catch((error) => console.error("Error posting message: ", error))
 
         setInputValue("");
         setMessagesToShow([...messagesToShow,newMessage]);

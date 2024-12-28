@@ -4,7 +4,7 @@ import { Experience } from '../dataTypes/experiences'
 import samples from "../assets/sampleExperiences.json"
 import { DateTime } from 'luxon'
 
-//Placeholder: will replace with context/routing
+//TODO: replace with context/routing
 const experienceRaw = samples["experiences"][0]
 const experience: Experience = {
   ...experienceRaw,
@@ -19,7 +19,7 @@ function ExperienceInfo() {
             <ExperienceInfoDisplay 
                 experience={experience} 
                 currentUser={"ae8d2e05-45c9-4220-94b1-594eb36c937c"} 
-                currentUserName="John User"
+                currentUserName="test user"
             />
         </div>
     )

@@ -70,10 +70,10 @@ class MessageRepository:
     async def post(self, message: Message):
         try:
             data = message.model_dump()
-            data["_id"] = ObjectId(message.id)
+            data["_id"] = message.id
             data.pop("id", None)
             result = await self.messages_collection.insert_one(data)
-            return {"id": str(result.inserted_id)}
+            return {"id": result.inserted_id}
 
         except PyMongoError as pme:
             logging.error(f"Database operation failed: {pme}")

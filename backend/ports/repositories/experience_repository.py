@@ -105,7 +105,7 @@ class ExperienceRepository:
     ) -> str:
         try:
             result = await self.experiences_collection.find_one_and_update(
-                {"_id": ObjectId(experience_id)},
+                {"_id": experience_id},
                 {"$push": {"messages": new_message_id}},
                 return_document=True,
             )
@@ -113,7 +113,7 @@ class ExperienceRepository:
                 logging.error(f"No experience found with id: {experience_id}")
                 raise HTTPException(status_code=404, detail="Experience not found")
 
-            return str(result.get("_id"))
+            return result.get("_id")
 
         except PyMongoError as pme:
             logging.error(f"Database operation failed: {pme}")
