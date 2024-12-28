@@ -2,7 +2,6 @@ import logging
 from os import getenv
 
 import pymongo.errors
-from bson import ObjectId
 from domain.entities.user import User
 from dotenv import load_dotenv
 from fastapi import HTTPException
@@ -30,9 +29,7 @@ class UserRepository:
     async def get(self, **filters) -> User | None:
         try:
             id = filters.get("id")
-            o_id = ObjectId(id)
-            user = await self.users_collection.find_one({"_id": o_id})
-            user["_id"] = str(user["_id"])
+            user = await self.users_collection.find_one({"_id": id})
             return user
 
         except Exception as e:
@@ -47,12 +44,9 @@ class UserRepository:
                 return []
 
             cursor = self.users_collection.find(
-                {"_id": {"$in": [ObjectId(m_id) for m_id in ids]}}
+                {"_id": {"$in": [m_id for m_id in ids]}}
             )
             fetched = await cursor.to_list(length=None)
-
-            for user in fetched:
-                user["_id"] = str(user["_id"])
             return fetched
 
         except Exception as e:

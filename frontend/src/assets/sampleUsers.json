@@ -1,41 +1,8 @@
 {
     "Users": 
     [
-        {
-            "id": "0",
-            "name": "John User",
-            "age": 35,
-            "gender": "male",
-            "communicationPreference": "text",
-            "communicationAddress": 0,
-            "rating": 100
-        },
-        {
-            "id": "1",
-            "name": "Bill User",
-            "age": 35,
-            "gender": "male",
-            "communicationPreference": "text",
-            "communicationAddress": 0,
-            "rating": 100
-        },
-        {
-            "id": "2",
-            "name": "Cathy User",
-            "age": 35,
-            "gender": "female",
-            "communicationPreference": "text",
-            "communicationAddress": 0,
-            "rating": 100
-        },
-        {
-            "id": "3",
-            "name": "James User",
-            "age": 35,
-            "gender": "nonbinary",
-            "communicationPreference": "text",
-            "communicationAddress": 0,
-            "rating": 100
-        }
+        "ae8d2e05-45c9-4220-94b1-594eb36c937c",
+        "585581f1-0356-47e4-b223-a420679b2e04",
+        "32f43e95-bc18-4122-b296-0f63890bce6b"
     ]
 }
