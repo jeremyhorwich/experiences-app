@@ -31,9 +31,7 @@ class ExperienceRepository:
     async def get(self, **filters) -> Experience | None:
         try:
             id = filters.get("id")
-            o_id = ObjectId(id)
-            experience = await self.experiences_collection.find_one({"_id": o_id})
-            experience["_id"] = str(experience["_id"])
+            experience = await self.experiences_collection.find_one({"_id": id})
             return experience
 
         except Exception as e:

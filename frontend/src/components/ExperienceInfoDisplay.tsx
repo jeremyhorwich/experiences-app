@@ -3,9 +3,9 @@ import { DateTime } from "luxon";
 import { ReservedInExperienceDisplay } from "./ReservedInExperienceDisplay";
 import { Message } from "../dataTypes/messages";
 import { Experience } from "../dataTypes/experiences";
-import samples from "../assets/sampleMessages.json";
 import { MessageBox } from "./MessageBox";
 import "./ExperienceInfoDisplay.css"
+import { findExperienceMessages } from "../api/findExperienceMessages";
 
 
 type ExperienceInfoDisplayProps = {
@@ -14,21 +14,28 @@ type ExperienceInfoDisplayProps = {
     currentUserName: string
 }
 
-
 function ExperienceInfoDisplay(props: ExperienceInfoDisplayProps) {
     const [messages, setMessages] = useState<Array<Message>>([]);
     const loading = useRef<Boolean>(true);
     
-    //Placeholder for retrieving messages from API
     useEffect(() => {
-        const sampleMessages = samples["messages"].map(message => ({
-          ...message,
-          timeSent: DateTime.fromISO(message.timeSent)
-        }))
-        setMessages(sampleMessages);
-        loading.current = false;
+        async function fetchData() {
+            try {
+                //TODO: Build endpoint to get messages directly instead of getting them by id
+                const messages = await findExperienceMessages(props.experience.id, 1, 10)  //TODO: add pagination controls
+                
+                if (messages) {
+                    setMessages(messages)
+                }
+            } catch (error){
+                console.error("Error fetching data: ", error)
+            } finally {
+                loading.current = false;
+            }
+        }
+
+        fetchData()
     },[])
-    //End placeholder
     
     return (
         <div className="experience-container">
