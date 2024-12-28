@@ -7,7 +7,7 @@ from domain.entities.message import Message
 from dotenv import load_dotenv
 from fastapi import HTTPException
 from motor.motor_asyncio import AsyncIOMotorClient
-from pymongo import DESCENDING
+from pymongo import ASCENDING
 from pymongo.errors import PyMongoError
 
 load_dotenv()
@@ -51,16 +51,16 @@ class MessageRepository:
                 return []
 
             cursor = self.messages_collection.find(
-                {"_id": {"$in": [ObjectId(m_id) for m_id in ids]}}
+                {"_id": {"$in": [m_id for m_id in ids]}}
             )
+
+            SKIP_OFFSET = 1
             paginated = (
-                await cursor.sort("created_at", DESCENDING)
-                .skip(page)
+                await cursor.sort("timeSent", ASCENDING)
+                .skip(page - SKIP_OFFSET)
                 .limit(page_size)
                 .to_list(length=page_size)
             )
-            for message in paginated:
-                message["_id"] = str(message["_id"])
             return paginated
 
         except Exception as e:

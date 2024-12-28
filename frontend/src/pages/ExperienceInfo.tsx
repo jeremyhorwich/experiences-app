@@ -16,7 +16,11 @@ function ExperienceInfo() {
     return (
         <div>
             <Toolbar />
-            <ExperienceInfoDisplay experience={experience} currentUser={"0"} currentUserName="John User"/>
+            <ExperienceInfoDisplay 
+                experience={experience} 
+                currentUser={"ae8d2e05-45c9-4220-94b1-594eb36c937c"} 
+                currentUserName="John User"
+            />
         </div>
     )
 }

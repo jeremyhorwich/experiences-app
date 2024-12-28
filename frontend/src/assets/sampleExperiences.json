@@ -1,7 +1,7 @@
 {
     "experiences": [
         {
-            "id": "0",
+            "id": "dfd56d67-e682-4df0-bb24-f62b6a9cc76f",
             "activity": "Come eat lunch with me!",
             "location": "Delicious Restaurant",
             "peopleNeeded": 1,
@@ -14,7 +14,11 @@
             "ownerId": "ae8d2e05-45c9-4220-94b1-594eb36c937c",
             "start": "2024-09-12T00:00:00.000Z",
             "end": "2024-09-13T00:00:00.000Z",
-            "messages": ["1"]
+            "messages": [
+                "815ce46c-3c1f-479c-8d60-5a672d29626c",
+                "b652ec9b-e7bf-49df-b513-a4f2cfe84e69",
+                "815ce46c-3c1f-479c-8d60-5a672d29626c"
+            ]
         }
     ]
 }
