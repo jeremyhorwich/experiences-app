@@ -53,8 +53,6 @@ class ExperienceRepository:
         try:
             cursor = self.experiences_collection.find(query).skip(skip).limit(page_size)
             found = await cursor.to_list(length=page_size)
-            for experience in found:
-                experience["_id"] = str(experience["_id"])
 
             total_count = await self.experiences_collection.count_documents(query)
 
