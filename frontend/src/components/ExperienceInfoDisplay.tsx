@@ -21,7 +21,7 @@ function ExperienceInfoDisplay(props: ExperienceInfoDisplayProps) {
     useEffect(() => {
         async function fetchData() {
             try {
-                //TODO: Build endpoint to get messages directly instead of getting them by id
+                //TODO: Build endpoint to get messages directly instead of searching for experience first
                 const messages = await findExperienceMessages(props.experience.id, 1, 10)  //TODO: add pagination controls
                 
                 if (messages) {
@@ -67,7 +67,12 @@ function ExperienceInfoDisplay(props: ExperienceInfoDisplayProps) {
                 </div>
                 <div>
                     {!loading.current && 
-                    <MessageBox messages={messages} currentUser={props.currentUser} currentUserName={props.currentUserName} />}
+                    <MessageBox 
+                        experienceId={props.experience.id}
+                        messages={messages} 
+                        currentUser={props.currentUser} 
+                        currentUserName={props.currentUserName} 
+                    />}
                 </div>
             </div>
         </div>
