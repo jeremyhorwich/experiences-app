@@ -4,8 +4,6 @@ import "./ExperienceCreationPage.css"
 
 
 function ExperienceCreationPage() {
-    //I will handle user context when I create the user login/signup page
-
     return (
         <div>
             <Toolbar/>

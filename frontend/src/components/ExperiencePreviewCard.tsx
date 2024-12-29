@@ -5,7 +5,7 @@ import "./ExperiencePreviewCard.css"
 
 function ExperiencePreviewCard(props: Experience) {
     function onClick() {
-        //reroute to experience info page
+        //TODO: Routing to experience info page
     }
 
     return (
