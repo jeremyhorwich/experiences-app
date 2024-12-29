@@ -2,7 +2,6 @@ import logging
 from os import getenv
 
 import pymongo.errors
-from bson import ObjectId
 from domain.entities.experience import Experience
 from dotenv import load_dotenv
 from fastapi import HTTPException
