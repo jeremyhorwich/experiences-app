@@ -5,7 +5,6 @@ import { ExperienceDateSelection } from "./ExperienceDateSelection";
 import { CheckboxState, ExperienceFilteringSelection } from "./ExperienceFilteringSelection";
 import "./ExperienceCreationForm.css"
 import { Experience } from "../dataTypes/experiences";
-import { start } from "repl";
 import { sendNewExperience } from "../api/sendNewExperience";
 import { UserContext } from "../context/userContext";
 
@@ -25,7 +24,7 @@ function ExperienceCreationForm() {
         female: true,
         nonbinary: true
     })
-    const file = useRef<string>();
+    const file = useRef<string>(); //TODO: File upload
 
     const userContext = useContext(UserContext);
     const currentUserId = userContext ? userContext.userId : "";

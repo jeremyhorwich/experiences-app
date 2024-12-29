@@ -7,7 +7,7 @@ async function sendNewExperience(experience: Experience) {
     const url = `${backendBaseURL}/experiences/`
 
     return fetchWithErrorHandling<string>(url, {
-        method: "GET",
+        method: "POST",
         headers: { 
             "Content-Type": "application/json" 
         },

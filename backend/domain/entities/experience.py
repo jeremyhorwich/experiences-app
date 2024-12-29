@@ -15,7 +15,7 @@ class Experience(BaseModel):
     start: datetime
     end: datetime
     messages: list[str]
-    image: Optional[str]
+    image: Optional[str] = None
     minAge: int
     maxAge: int
     minRating: int

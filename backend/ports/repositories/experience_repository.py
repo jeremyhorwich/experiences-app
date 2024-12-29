@@ -74,10 +74,10 @@ class ExperienceRepository:
     async def post(self, experience: Experience):
         try:
             data = experience.model_dump()
-            data["_id"] = ObjectId(experience.id)
+            data["_id"] = experience.id
             data.pop("id", None)
             result = await self.experiences_collection.insert_one(data)
-            return {"id": str(result.inserted_id)}
+            return {"id": result.inserted_id}
 
         except Exception as e:
             logging.error(f"ExperienceRepository.post failed: {e}")
