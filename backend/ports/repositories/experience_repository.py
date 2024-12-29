@@ -2,7 +2,6 @@ import logging
 from os import getenv
 
 import pymongo.errors
-from bson import ObjectId
 from domain.entities.experience import Experience
 from dotenv import load_dotenv
 from fastapi import HTTPException
@@ -41,11 +40,11 @@ class ExperienceRepository:
     async def find_matching(
         self, age: int, rating: int, gender: str, page: int, page_size: int
     ):
-        gender_field = f"{gender}_included"
+        gender_field = f"{gender}Included"
         query = {
-            "min_age": {"$lte": age},
-            "max_age": {"$gte": age},
-            "min_rating": {"$lte": rating},
+            "minAge": {"$lte": age},
+            "maxAge": {"$gte": age},
+            "minRating": {"$lte": rating},
             gender_field: True,
         }
 
@@ -74,10 +73,10 @@ class ExperienceRepository:
     async def post(self, experience: Experience):
         try:
             data = experience.model_dump()
-            data["_id"] = ObjectId(experience.id)
+            data["_id"] = experience.id
             data.pop("id", None)
             result = await self.experiences_collection.insert_one(data)
-            return {"id": str(result.inserted_id)}
+            return {"id": result.inserted_id}
 
         except Exception as e:
             logging.error(f"ExperienceRepository.post failed: {e}")

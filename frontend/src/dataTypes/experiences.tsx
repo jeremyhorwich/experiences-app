@@ -12,6 +12,12 @@ type Experience = {
     end: DateTime,
     messages: Array<string>,
     image?: string 
+    minAge: number,
+    maxAge: number,
+    minRating: number,
+    maleIncluded: boolean,
+    femaleIncluded: boolean,
+    nonbinaryIncluded: boolean,
 }
 
 export type { Experience }

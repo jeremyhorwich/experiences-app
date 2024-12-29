@@ -1,33 +1,61 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { DateTime } from "luxon";
 import { ExperienceDateSelection } from "./ExperienceDateSelection";
 import { CheckboxState, ExperienceFilteringSelection } from "./ExperienceFilteringSelection";
 import "./ExperienceCreationForm.css"
+import { Experience } from "../dataTypes/experiences";
+import { sendNewExperience } from "../api/sendNewExperience";
+import { UserContext } from "../context/userContext";
 
 function ExperienceCreationForm() {
     const [peopleNeeded, setPeopleNeeded] = useState<number>(1);
-
+    
     const activity = useRef<string>("");
     const description = useRef<string>("");
     const location = useRef<string>("");
     const startTime = useRef<DateTime>(DateTime.now());
     const endTime = useRef<DateTime>(DateTime.now().plus({hours: 2}));
-    const filteringMinAge = useRef<number>(40);
-    const filteringMaxAge = useRef<number>(50);
-    const filteringMinRating = useRef<number>(100);
+    const minAge = useRef<number>(40);
+    const maxAge = useRef<number>(50);
+    const minRating = useRef<number>(100);
     const checkState = useRef<CheckboxState>({
         male: true,
         female: true,
         nonbinary: true
     })
-    const file = useRef<string>();
+    const file = useRef<string>(); //TODO: File upload
 
+    const userContext = useContext(UserContext);
+    const currentUserId = userContext ? userContext.userId : "";
+    
     function handleSubmit() {
         if (activity.current === "" || description.current === "" || location.current === "") {
             return;
         }
 
-        //Placeholder to post the experience into the database via API, and attach filtering criteria
+        const newExperience: Experience = {
+            id: uuidv4(),
+            activity: activity.current,
+            location: location.current,
+            peopleNeeded: peopleNeeded,
+            peopleReserved: [],
+            description: description.current,
+            ownerId: currentUserId,
+            start: startTime.current,
+            end: endTime.current,
+            messages: [],
+            image: file.current || undefined,
+            minAge: minAge.current,
+            maxAge: maxAge.current,
+            minRating: minRating.current,
+            maleIncluded: checkState.current.male,
+            femaleIncluded: checkState.current.female,
+            nonbinaryIncluded: checkState.current.nonbinary
+        }
+
+        sendNewExperience(newExperience)
+            .catch((error) => console.error("Error posting experience: ", error))
     }
 
     function onDateChange(startDate: Date, duration: number) {
@@ -44,9 +72,9 @@ function ExperienceCreationForm() {
 
     function onFilteringChange(newCheckedState: CheckboxState, newMinAge: number, newMaxAge: number, newMinRating: number) {
         checkState.current = newCheckedState;
-        filteringMinAge.current = newMinAge;
-        filteringMaxAge.current = newMaxAge;
-        filteringMinRating.current = newMinRating
+        minAge.current = newMinAge;
+        maxAge.current = newMaxAge;
+        minRating.current = newMinRating
     }
 
     return (
