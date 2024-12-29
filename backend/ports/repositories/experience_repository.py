@@ -41,11 +41,11 @@ class ExperienceRepository:
     async def find_matching(
         self, age: int, rating: int, gender: str, page: int, page_size: int
     ):
-        gender_field = f"{gender}_included"
+        gender_field = f"{gender}Included"
         query = {
-            "min_age": {"$lte": age},
-            "max_age": {"$gte": age},
-            "min_rating": {"$lte": rating},
+            "minAge": {"$lte": age},
+            "maxAge": {"$gte": age},
+            "minRating": {"$lte": rating},
             gender_field: True,
         }
 
