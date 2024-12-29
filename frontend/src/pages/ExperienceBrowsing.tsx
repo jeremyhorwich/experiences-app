@@ -1,31 +1,39 @@
 import { Toolbar } from "../components/Toolbar";
 import { ExperiencePreview } from "../components/ExperiencePreview";
 import { PaginationControl } from "../components/PaginationControls";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Experience } from "../dataTypes/experiences";
-import { DateTime } from "luxon";
-import samples from "../assets/sampleExperiences.json";
 import "./ExperienceBrowsing.css"
+import { UserContext } from "../context/userContext";
+import { findExperiences } from "../api/findExperiences";
 
 function ExperienceBrowsing() {
     const [experiences, setExperiences] = useState<Array<Experience>>([]);
-    //Initialize above to empty array when connecting to API
     const [loading, setLoading] = useState<boolean>(true);
+    const [displayError, setDisplayError] = useState<boolean>(true);
+
+    const userContext = useContext(UserContext);
+    const currentUserId = userContext ? userContext.userId : "";
     
-    const page = useRef<number>(0);
+    const page = useRef<number>(1);
     const NUMBER_PER_PAGE = 7;
 
+    async function fetchExperiences(currentPage: number) {
+        try {
+            const response = await findExperiences(currentUserId, currentPage, NUMBER_PER_PAGE)
+            if (response) {
+                setExperiences(response.results)
+            }
+        } catch (error) {
+            setDisplayError(true);
+            console.error("Error fetching experiences: ", error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
     useEffect(() => {
-        //Later this will be replaced with a call to the API
-        const sampleExperiences = samples["experiences"]
-            .slice(0,NUMBER_PER_PAGE)
-            .map(exp => ({
-                ...exp,
-                start: DateTime.fromISO(exp.start),
-                end: DateTime.fromISO(exp.end)
-            }));
-        setExperiences(sampleExperiences);
-        setLoading(false);
+        fetchExperiences(page.current);
     }, [])
 
     function handlePageChange(dir: -1 | 1) {
@@ -34,22 +42,25 @@ function ExperienceBrowsing() {
         }
 
         page.current = page.current + dir;
-        //Fetch from the API
-        //Set experiences if fetch is successful - this will trigger rerender and display correct page #
+        fetchExperiences(page.current)
     }
     
     return (
         <div>
             <Toolbar />
-            {loading ? (<div className="centered">Loading...</div>) : (
-                <>
-                    <div className="centered">
-                        <ExperiencePreview experiences={experiences} />
-                    </div>
-                    <div className="centered">
-                        <PaginationControl currentPage={page.current} onChange={(dir: -1 | 1) => {handlePageChange(dir)}}/>
-                    </div>
-                </>
+            {displayError ? (
+                (<div className="centered">Sorry, there was a problem fetching your data.</div>)
+            ) : (
+                loading ? (<div className="centered">Loading...</div>) : (
+                    <>
+                        <div className="centered">
+                            <ExperiencePreview experiences={experiences} />
+                        </div>
+                        <div className="centered">
+                            <PaginationControl currentPage={page.current} onChange={(dir: -1 | 1) => {handlePageChange(dir)}}/>
+                        </div>
+                    </>
+                )
             )}
         </div>
     )
