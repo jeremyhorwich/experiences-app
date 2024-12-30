@@ -1,5 +1,6 @@
 import "./Toolbar.css";
 
+//TODO: Populate this with useful information
 function Toolbar() {
   return (
     <div className="toolbar">

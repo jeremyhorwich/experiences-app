@@ -1,22 +1,24 @@
 import { ExperienceInfoDisplay } from "../components/ExperienceInfoDisplay";
 import { Toolbar } from "../components/Toolbar";
-import { Experience } from '../dataTypes/experiences'
 import { useContext } from "react";
-import { UserContext } from "../context/userContext";
+import { Context } from "../context/context";
 
-function ExperienceInfo(props: {experience: Experience}) {
-    const userContext = useContext(UserContext);
-    const currentUserId = userContext ? userContext.userId : "";
-    const currentUsername = userContext ? userContext.username : "";
+function ExperienceInfo() {
+    const context = useContext(Context);
+    const currentUserId = context ? context.userId : "";
+    const currentUsername = context ? context.username : "";
+    const experience = context?.detailExperience
 
     return (
         <div>
             <Toolbar />
-            <ExperienceInfoDisplay 
-                experience={props.experience} 
-                currentUser={currentUserId} 
-                currentUserName={currentUsername}
-            />
+            {experience ? 
+                <ExperienceInfoDisplay 
+                    experience={experience} 
+                    currentUser={currentUserId} 
+                    currentUserName={currentUsername}
+                /> : 
+            <div> No experience found... </div>}
         </div>
     )
 }

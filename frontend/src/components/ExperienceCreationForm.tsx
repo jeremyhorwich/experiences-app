@@ -6,7 +6,7 @@ import { CheckboxState, ExperienceFilteringSelection } from "./ExperienceFilteri
 import "./ExperienceCreationForm.css"
 import { Experience } from "../dataTypes/experiences";
 import { sendNewExperience } from "../api/sendNewExperience";
-import { UserContext } from "../context/userContext";
+import { Context } from "../context/context";
 
 function ExperienceCreationForm() {
     const [peopleNeeded, setPeopleNeeded] = useState<number>(1);
@@ -26,7 +26,7 @@ function ExperienceCreationForm() {
     })
     const file = useRef<string>(); //TODO: File upload
 
-    const userContext = useContext(UserContext);
+    const userContext = useContext(Context);
     const currentUserId = userContext ? userContext.userId : "";
     
     function handleSubmit() {
