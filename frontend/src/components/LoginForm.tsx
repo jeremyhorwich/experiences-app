@@ -14,7 +14,7 @@ function LoginForm() {
         throw new Error("LoginForm must be used within a UserContextProvider");
     }
 
-    const { setUserId: setUser, setToken } = userContext;
+    const { setUserId: setUser, setUsername, setToken } = userContext;
 
 
     function onLoginSubmit() {
@@ -22,6 +22,7 @@ function LoginForm() {
             .then((response) => {
                 if (response.success) {
                     setUser(response.userId);
+                    setUsername(response.username)
                     setToken(response.token);
                 }
             })
