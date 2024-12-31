@@ -61,7 +61,6 @@ pip install -r requirements.txt
 Create a `.env` file in the `backend` directory with the following content:
 MONGO_DB_USER = user0  # Replace with a MongoDB user
 MONGO_DB_PASSWORD = password #  Replace with the password for the MongoDB user above
-STOCKFISH = C:\Users\stockfish.exe  # Replace with the filepath to your local stockfish installation
 
 5. Run the FastAPI server:
 fastapi dev main.py
@@ -83,8 +82,3 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- **Stockfish:** Open-source chess engine used for move analysis.
-- **Chess.com API:** Provides access to user data and game history.
