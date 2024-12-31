@@ -4,7 +4,7 @@ import { PaginationControl } from "../components/PaginationControls";
 import { useContext, useEffect, useRef, useState } from "react";
 import { Experience } from "../dataTypes/experiences";
 import "./ExperienceBrowsing.css"
-import { UserContext } from "../context/userContext";
+import { Context } from "../context/context";
 import { findExperiences } from "../api/findExperiences";
 
 function ExperienceBrowsing() {
@@ -12,7 +12,7 @@ function ExperienceBrowsing() {
     const [loading, setLoading] = useState<boolean>(true);
     const [displayError, setDisplayError] = useState<boolean>(true);
 
-    const userContext = useContext(UserContext);
+    const userContext = useContext(Context);
     const currentUserId = userContext ? userContext.userId : "";
     
     const page = useRef<number>(1);

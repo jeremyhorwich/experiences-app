@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { RatingButtons, RatingOptions } from "./RatingButtons";
 import "./UserRatingForm.css"
 import { updateUserRating } from "../api/updateUserRating";
+import { useNavigate } from "react-router-dom";
 
 type UserRatingFormProps = {
     userIds: Array<string>,
@@ -14,6 +15,8 @@ function UserRatingForm(props: UserRatingFormProps) {
     const [showCommentPrompt, setShowCommentPrompt] = useState<boolean>(false);
     const ratingSelection = useRef<null|RatingOptions>(null);
     const comment = useRef<string>("");
+    
+    const navigate = useNavigate();
 
     function handleSubmit() {
         if (ratingSelection.current === null) {
@@ -44,7 +47,7 @@ function UserRatingForm(props: UserRatingFormProps) {
             setShowCommentPrompt(false);
             setCurrentRatee(currentRatee + 1);
         } else {
-            //TODO: redirect to experience browsing page
+            navigate("/experiences");
         }
     }
 

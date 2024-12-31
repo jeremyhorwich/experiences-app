@@ -1,15 +1,21 @@
+import { useContext } from "react";
 import { Toolbar } from "../components/Toolbar";
 import { UserRatingForm } from "../components/UserRatingForm";
 import "./UsersRatingPage.css"
-
+import { Context } from "../context/context";
 
 function UsersRatingPage() {
+    const context = useContext(Context)
+    const userIds = context ? context.usersToRate : [""]
+    const userFirstNames = context ? context.usersToRateFirstNames : [""]
+    const activity = context ? context.activityToRate : ""
+
     return (
         <div>
             <Toolbar/>
             <div className="form">
-                {/* Sample test data */}
-                <UserRatingForm userIds={["ae8d2e05-45c9-4220-94b1-594eb36c937c"]} userFirstNames={["Bob", "Tom"]} activity="Going to the beach"/>
+                {/* TODO: Send notification to user and set context  info from there */}
+                <UserRatingForm userIds={userIds} userFirstNames={userFirstNames} activity={activity}/>
             </div>
         </div>
     )
