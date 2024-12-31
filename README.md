@@ -32,13 +32,13 @@ To get a local copy of the project up and running, follow these steps:
 
 ### Frontend (React)
 
-1. Navigate to the `puzzles-saver-app` directory:
-cd puzzles-saver-app
+1. Navigate to the `frontend` directory:
+cd frontend
 
 2. Install dependencies:
 npm install
 
-3. Create a `.env` file in the `puzzles-saver-app` directory with the following content:
+3. Create a `.env` file in the `frontend` directory with the following content:
 VITE_BACKEND_BASE_URL=http://127.0.0.1:8000 # Replace with your FastAPI backend URL
 
 5. Start the React development server:
