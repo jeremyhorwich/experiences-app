@@ -1,0 +1,565 @@
+---
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+paths:
+  "/authentication/signup":
+    post:
+      summary: Create User
+      operationId: create_user_authentication_signup_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/PostCreateUserRequest"
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/authentication/login":
+    post:
+      summary: Login
+      operationId: login_authentication_login_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/PostLoginRequest"
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/experiences/{experience_id}":
+    get:
+      summary: Get Experience
+      operationId: get_experience_experiences__experience_id__get
+      parameters:
+      - name: experience_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Experience Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/experiences/":
+    post:
+      summary: Post Experience
+      operationId: post_experience_experiences__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Experience"
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/experiences/{experience_id}/messages/":
+    get:
+      summary: Get Messages By Experience
+      operationId: get_messages_by_experience_experiences__experience_id__messages__get
+      parameters:
+      - name: experience_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Experience Id
+      - name: page_number
+        in: query
+        required: true
+        schema:
+          type: integer
+          title: Page Number
+      - name: page_size
+        in: query
+        required: true
+        schema:
+          type: integer
+          title: Page Size
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+    post:
+      summary: Post New Message To Experience
+      operationId: post_new_message_to_experience_experiences__experience_id__messages__post
+      parameters:
+      - name: experience_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Experience Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/PostMessageRequest"
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/messages/{message_id}":
+    get:
+      summary: Get Message
+      operationId: get_message_messages__message_id__get
+      parameters:
+      - name: message_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Message Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/users/{user_id}":
+    get:
+      summary: Get User
+      operationId: get_user_users__user_id__get
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/users/":
+    post:
+      summary: Get Multiple Users
+      operationId: get_multiple_users_users__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UserIdsRequest"
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/users/{user_id}/update-rating/":
+    put:
+      summary: Update Rating
+      operationId: update_rating_users__user_id__update_rating__put
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UpdateRatingRequest"
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/users/{user_id}/experiences/":
+    get:
+      summary: Get Applicable Experiences
+      operationId: get_applicable_experiences_users__user_id__experiences__get
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Id
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+          title: Page
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+          title: Pagesize
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+  "/index":
+    get:
+      summary: Display Index
+      operationId: display_index_index_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  "/":
+    get:
+      summary: Display Index
+      operationId: display_index__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+components:
+  schemas:
+    Credential:
+      properties:
+        id:
+          type: string
+          title: Id
+        user:
+          type: string
+          title: User
+        username:
+          type: string
+          title: Username
+        password:
+          type: string
+          title: Password
+      type: object
+      required:
+      - id
+      - user
+      - username
+      - password
+      title: Credential
+    Experience:
+      properties:
+        id:
+          type: string
+          title: Id
+        activity:
+          type: string
+          title: Activity
+        location:
+          type: string
+          title: Location
+        peopleNeeded:
+          type: integer
+          title: Peopleneeded
+        peopleReserved:
+          items:
+            type: string
+          type: array
+          title: Peoplereserved
+        description:
+          type: string
+          title: Description
+        ownerId:
+          type: string
+          title: Ownerid
+        start:
+          type: string
+          format: date-time
+          title: Start
+        end:
+          type: string
+          format: date-time
+          title: End
+        messages:
+          items:
+            type: string
+          type: array
+          title: Messages
+        image:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Image
+        minAge:
+          type: integer
+          title: Minage
+        maxAge:
+          type: integer
+          title: Maxage
+        minRating:
+          type: integer
+          title: Minrating
+        maleIncluded:
+          type: boolean
+          title: Maleincluded
+        femaleIncluded:
+          type: boolean
+          title: Femaleincluded
+        nonbinaryIncluded:
+          type: boolean
+          title: Nonbinaryincluded
+      type: object
+      required:
+      - id
+      - activity
+      - location
+      - peopleNeeded
+      - peopleReserved
+      - description
+      - ownerId
+      - start
+      - end
+      - messages
+      - minAge
+      - maxAge
+      - minRating
+      - maleIncluded
+      - femaleIncluded
+      - nonbinaryIncluded
+      title: Experience
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            "$ref": "#/components/schemas/ValidationError"
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    Message:
+      properties:
+        id:
+          type: string
+          title: Id
+        text:
+          type: string
+          title: Text
+        sender:
+          type: string
+          title: Sender
+        senderName:
+          type: string
+          title: Sendername
+        timeSent:
+          type: string
+          format: date-time
+          title: Timesent
+      type: object
+      required:
+      - id
+      - text
+      - sender
+      - senderName
+      - timeSent
+      title: Message
+    PostCreateUserRequest:
+      properties:
+        credential:
+          "$ref": "#/components/schemas/Credential"
+        user:
+          "$ref": "#/components/schemas/User"
+      type: object
+      required:
+      - credential
+      - user
+      title: PostCreateUserRequest
+    PostLoginRequest:
+      properties:
+        username:
+          type: string
+          title: Username
+        password:
+          type: string
+          title: Password
+      type: object
+      required:
+      - username
+      - password
+      title: PostLoginRequest
+    PostMessageRequest:
+      properties:
+        new_message:
+          "$ref": "#/components/schemas/Message"
+      type: object
+      required:
+      - new_message
+      title: PostMessageRequest
+    UpdateRatingRequest:
+      properties:
+        increment_value:
+          type: integer
+          title: Increment Value
+      type: object
+      required:
+      - increment_value
+      title: UpdateRatingRequest
+    User:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        age:
+          type: integer
+          title: Age
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+          - nonbinary
+          title: Gender
+        communicationPreference:
+          type: string
+          enum:
+          - text
+          - email
+          title: Communicationpreference
+        communicationAddress:
+          anyOf:
+          - type: string
+          - type: integer
+          title: Communicationaddress
+        rating:
+          type: integer
+          title: Rating
+      type: object
+      required:
+      - id
+      - name
+      - age
+      - gender
+      - communicationPreference
+      - communicationAddress
+      - rating
+      title: User
+    UserIdsRequest:
+      properties:
+        user_ids:
+          items:
+            type: string
+          type: array
+          title: User Ids
+      type: object
+      required:
+      - user_ids
+      title: UserIdsRequest
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
