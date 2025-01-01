@@ -67,6 +67,8 @@ fastapi dev main.py
 
 6. The FastAPI server will start at `http://localhost:8000`.
 
+(The server's endpoints are listed and detailed via Swagger in backend/endpoints.yaml.
+
 ## To-dos
 
 The project has certain major planned features which are not part of this MVP effort. These include:
