@@ -67,7 +67,7 @@ fastapi dev main.py
 
 6. The FastAPI server will start at `http://localhost:8000`.
 
-(The server's endpoints are listed and detailed via Swagger in backend/endpoints.yaml.
+The server's endpoints are [listed and detailed via Swagger](backend/endpoints.yaml).
 
 ## To-dos
 
